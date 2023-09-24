@@ -1,4 +1,6 @@
+using DPA.Store.DOMAIN.Core.Interfaces;
 using DPA.Store.DOMAIN.Infrastructure.Data;
+using DPA.Store.DOMAIN.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 var _config = builder.Configuration;
 var _cnx = _config.GetConnectionString("DevConnection");
 builder.Services.AddDbContext<StoreDbContext>(options => { options.UseSqlServer(_cnx);});
+
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
 
 builder.Services.AddControllers();
