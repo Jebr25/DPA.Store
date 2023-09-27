@@ -41,7 +41,7 @@ namespace DPA.Store.API.Controllers
                 return Ok(result);
         }
 
-        [HttpGet("Delete/{id}")]
+        [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _categoryRepository.Delete(id);
